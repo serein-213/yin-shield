@@ -1,0 +1,25 @@
+{
+  "name": "@serein-213/openclaw-yinshield",
+  "version": "0.1.0",
+  "description": "Thin OpenClaw bridge for the local YinShield privacy service.",
+  "type": "module",
+  "main": "./src/index.js",
+  "files": [
+    "src",
+    "openclaw.plugin.json",
+    "README.md"
+  ],
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "yinshield",
+    "privacy",
+    "pii"
+  ],
+  "license": "Apache-2.0",
+  "openclaw": {
+    "extensions": [
+      "./src/index.js"
+    ]
+  }
+}

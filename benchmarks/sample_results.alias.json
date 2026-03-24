@@ -1,0 +1,112 @@
+{
+  "mode": "alias",
+  "strategy": "strict",
+  "metrics": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "false_positive_rate": 0.0,
+    "recovery_rate": 1.0,
+    "semantic_proxy": 0.8182
+  },
+  "cases": [
+    {
+      "id": "case_1",
+      "masked_text": "我叫陈明，手机号17785952998，身份证803004909160803244。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "case_2",
+      "masked_text": "收件人：钱欣怡，收货地址：湖北省武汉市洪山区珞喻路120号，快递单号AX6330583691。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.889
+    },
+    {
+      "id": "case_3",
+      "masked_text": "公司名称：成都星帆智能科技有限公司，统一社会信用代码02658133RX19VZ915B。",
+      "matches": 2,
+      "expected": 2,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.833
+    },
+    {
+      "id": "case_4",
+      "masked_text": "患者是卫浩，病历号NX67478888378，护照号650347203。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "case_5",
+      "masked_text": "银行卡6221064100450397803，车牌川BEANU1，订单号02254601D2Q243。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.556
+    },
+    {
+      "id": "negative_1",
+      "masked_text": "今天下午三点开会，项目代号是春山计划，不包含任何敏感身份信息。",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "en_case_1",
+      "masked_text": "My name is Liam Foster, phone: 17735637238, SSN: 411-28-2962.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "en_case_2",
+      "masked_text": "Ship to: 1600 Pennsylvania Ave NW, Washington, DC 20500. Signed with BlueRiver Health Technologies LLC and ClearPath Software Solutions Corp..",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.667
+    },
+    {
+      "id": "mixed_case_1",
+      "masked_text": "联系人：钱欣怡。My name is Liam Foster, 收货地址：上海市浦东新区世纪大道100号，address: 1600 Pennsylvania Ave NW, Washington, DC 20500.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.667
+    },
+    {
+      "id": "en_negative_1",
+      "masked_text": "Please Contact Support immediately. Activity Center opened today.",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "en_case_3",
+      "masked_text": "DOB: 1984-07-13, EIN: 62-8512854, MRN: 2L9-356047, tracking number: 3G967DK95308622509.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.833
+    }
+  ]
+}

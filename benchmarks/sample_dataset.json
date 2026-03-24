@@ -1,0 +1,91 @@
+[
+  {
+    "id": "case_1",
+    "text": "我叫张三，手机号13812345678，身份证110101199001011234。",
+    "expected": {
+      "PERSON": ["张三"],
+      "PHONE": ["13812345678"],
+      "ID_CARD": ["110101199001011234"]
+    }
+  },
+  {
+    "id": "case_2",
+    "text": "收件人：王小明，收货地址：浙江省杭州市西湖区文三路90号2单元，快递单号SF1234567890。",
+    "expected": {
+      "PERSON": ["王小明"],
+      "ADDRESS": ["浙江省杭州市西湖区文三路90号2单元"],
+      "TRACKING_NO": ["SF1234567890"]
+    }
+  },
+  {
+    "id": "case_3",
+    "text": "公司名称：杭州云盾科技有限公司，统一社会信用代码91330106MA27XG019Q。",
+    "expected": {
+      "COMPANY_NAME": ["杭州云盾科技有限公司"],
+      "COMPANY_CODE": ["91330106MA27XG019Q"]
+    }
+  },
+  {
+    "id": "case_4",
+    "text": "患者是李四，病历号MR20240324001，护照号E12345678。",
+    "expected": {
+      "PERSON": ["李四"],
+      "MEDICAL_RECORD": ["MR20240324001"],
+      "PASSPORT": ["E12345678"]
+    }
+  },
+  {
+    "id": "case_5",
+    "text": "银行卡6222020202020202020，车牌京A12345，订单号20240324ABC123。",
+    "expected": {
+      "BANK_CARD": ["6222020202020202020"],
+      "LICENSE_PLATE": ["京A12345"],
+      "ORDER_NO": ["20240324ABC123"]
+    }
+  },
+  {
+    "id": "negative_1",
+    "text": "今天下午三点开会，项目代号是春山计划，不包含任何敏感身份信息。",
+    "expected": {}
+  },
+  {
+    "id": "en_case_1",
+    "text": "My name is John Smith, phone: +1 (415) 555-0123, SSN: 123-45-6789.",
+    "expected": {
+      "PERSON": ["John Smith"],
+      "PHONE": ["+1 (415) 555-0123"],
+      "SSN": ["123-45-6789"]
+    }
+  },
+  {
+    "id": "en_case_2",
+    "text": "Ship to: 221B Baker St Apt 5, Boston, MA 02108. Signed with Harborview Commercial Bank PLC and Westfield General Hospital.",
+    "expected": {
+      "ADDRESS": ["221B Baker St Apt 5, Boston, MA 02108"],
+      "COMPANY_NAME": ["Harborview Commercial Bank PLC", "Westfield General Hospital"]
+    }
+  },
+  {
+    "id": "mixed_case_1",
+    "text": "联系人：王小明。My name is John Smith, 收货地址：北京市朝阳区建国路88号，address: 350 5th Ave, New York, NY 10118.",
+    "expected": {
+      "PERSON": ["王小明", "John Smith"],
+      "ADDRESS": ["北京市朝阳区建国路88号", "350 5th Ave, New York, NY 10118"]
+    }
+  },
+  {
+    "id": "en_negative_1",
+    "text": "Please Contact Support immediately. Activity Center opened today.",
+    "expected": {}
+  },
+  {
+    "id": "en_case_3",
+    "text": "DOB: 1991-04-23, EIN: 12-3456789, MRN: MRN-778899, tracking number: 1Z999AA10123456784.",
+    "expected": {
+      "BIRTHDATE": ["1991-04-23"],
+      "TAX_ID": ["12-3456789"],
+      "MEDICAL_RECORD": ["MRN-778899"],
+      "TRACKING_NO": ["1Z999AA10123456784"]
+    }
+  }
+]

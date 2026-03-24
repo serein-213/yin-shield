@@ -1,0 +1,55 @@
+{
+  "id": "openclaw-yinshield",
+  "name": "YinShield",
+  "description": "Thin bridge from OpenClaw tools to a local YinShield HTTP service.",
+  "version": "0.0.1",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "baseUrl": {
+        "type": "string",
+        "default": "http://127.0.0.1:27811"
+      },
+      "mode": {
+        "type": "string",
+        "enum": [
+          "placeholder",
+          "alias"
+        ],
+        "default": "placeholder"
+      },
+      "timeoutMs": {
+        "type": "integer",
+        "minimum": 100,
+        "default": 10000
+      },
+      "authToken": {
+        "type": "string"
+      },
+      "autoStart": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+  "uiHints": {
+    "baseUrl": {
+      "label": "YinShield Base URL",
+      "placeholder": "http://127.0.0.1:27811"
+    },
+    "mode": {
+      "label": "Default Mode"
+    },
+    "timeoutMs": {
+      "label": "Timeout (ms)"
+    },
+    "authToken": {
+      "label": "Auth Token",
+      "sensitive": true
+    },
+    "autoStart": {
+      "label": "Auto-start Service"
+    }
+  }
+}

@@ -5,4 +5,27 @@ dist/
 build/
 *.egg-info/
 .venv/
+.release-venv/
 .DS_Store
+.python-version
+.coverage
+.coverage.*
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+htmlcov/
+*.tgz
+
+# Local tool state
+.qwen/
+
+# Local runtime/session artifacts
+*.tmp
+*.log
+yinshield-session.json
+.yinshield*.json
+
+# Node install artifacts
+node_modules/

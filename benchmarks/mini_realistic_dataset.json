@@ -1,0 +1,261 @@
+[
+  {
+    "id": "zh_customer_support_1",
+    "text": "用户反馈：我叫张三，昨天在门店留的手机号是13812345678，现在请改成收件人王小明，地址发到北京市朝阳区建国路88号A座12层。",
+    "expected": {
+      "PERSON": ["张三", "王小明"],
+      "PHONE": ["13812345678"],
+      "ADDRESS": ["北京市朝阳区建国路88号A座12层"]
+    }
+  },
+  {
+    "id": "zh_customer_support_2",
+    "text": "联系人：李四，微信号是li4_service，联系地址：上海市浦东新区世纪大道100号。",
+    "expected": {
+      "PERSON": ["李四"],
+      "WECHAT": ["li4_service"],
+      "ADDRESS": ["上海市浦东新区世纪大道100号"]
+    }
+  },
+  {
+    "id": "zh_identity_1",
+    "text": "我是赵敏，身份证110101199001011234，生日：1992-08-16。",
+    "expected": {
+      "PERSON": ["赵敏"],
+      "ID_CARD": ["110101199001011234"],
+      "BIRTHDATE": ["1992-08-16"]
+    }
+  },
+  {
+    "id": "zh_identity_2",
+    "text": "患者是李四，护照号E12345678，住在湖北省武汉市洪山区珞喻路120号。",
+    "expected": {
+      "PERSON": ["李四"],
+      "PASSPORT": ["E12345678"],
+      "ADDRESS": ["湖北省武汉市洪山区珞喻路120号"]
+    }
+  },
+  {
+    "id": "zh_finance_1",
+    "text": "开户银行：中国建设银行深圳南山支行，银行账号：6222 0212 3456 7890 123，纳税人识别号：91330100MA27XG019Q。",
+    "expected": {
+      "BANK_NAME": ["中国建设银行深圳南山支行"],
+      "BANK_ACCOUNT": ["6222 0212 3456 7890 123"],
+      "TAX_ID": ["91330100MA27XG019Q"]
+    }
+  },
+  {
+    "id": "zh_finance_2",
+    "text": "公司名称：杭州云盾科技有限公司，统一社会信用代码91330106MA27XG019Q，开户行：中国工商银行杭州分行。",
+    "expected": {
+      "COMPANY_NAME": ["杭州云盾科技有限公司"],
+      "COMPANY_CODE": ["91330106MA27XG019Q"],
+      "BANK_NAME": ["中国工商银行杭州分行"]
+    }
+  },
+  {
+    "id": "zh_medical_1",
+    "text": "患者王小明已办理入院，病历号MR20240324001，住址为浙江省杭州市西湖区文三路90号2单元。",
+    "expected": {
+      "PERSON": ["王小明"],
+      "MEDICAL_RECORD": ["MR20240324001"],
+      "ADDRESS": ["浙江省杭州市西湖区文三路90号2单元"]
+    }
+  },
+  {
+    "id": "zh_medical_2",
+    "text": "门诊号：OP20240324007，患者是张三，联系地址：江苏省苏州市工业园区星湖街88号。",
+    "expected": {
+      "MEDICAL_RECORD": ["OP20240324007"],
+      "PERSON": ["张三"],
+      "ADDRESS": ["江苏省苏州市工业园区星湖街88号"]
+    }
+  },
+  {
+    "id": "zh_logistics_1",
+    "text": "请发到朝阳区酒仙桥路6号院3号楼，签收人是李四，快递单号SF1234567890。",
+    "expected": {
+      "ADDRESS": ["朝阳区酒仙桥路6号院3号楼"],
+      "PERSON": ["李四"],
+      "TRACKING_NO": ["SF1234567890"]
+    }
+  },
+  {
+    "id": "zh_logistics_2",
+    "text": "收件人：王小明，收货地址：广东省深圳市南山区科技园科苑路15号，订单编号：20240324ABC123。",
+    "expected": {
+      "PERSON": ["王小明"],
+      "ADDRESS": ["广东省深圳市南山区科技园科苑路15号"],
+      "ORDER_NO": ["20240324ABC123"]
+    }
+  },
+  {
+    "id": "zh_vehicle_1",
+    "text": "车主是王小明，车牌号京A12345，车架号：LFV3A24G9H1234567。",
+    "expected": {
+      "PERSON": ["王小明"],
+      "LICENSE_PLATE": ["京A12345"],
+      "VIN": ["LFV3A24G9H1234567"]
+    }
+  },
+  {
+    "id": "zh_vehicle_2",
+    "text": "请张三明天到会，车牌京B66889，联系人手机号13900001111。",
+    "expected": {
+      "PERSON": ["张三"],
+      "LICENSE_PLATE": ["京B66889"],
+      "PHONE": ["13900001111"]
+    }
+  },
+  {
+    "id": "zh_biz_1",
+    "text": "客户号：KH-2024-9981，会员号：VIP-778899，合同编号：HT2024-SZ-0099。",
+    "expected": {
+      "CUSTOMER_ID": ["KH-2024-9981"],
+      "MEMBER_ID": ["VIP-778899"],
+      "CONTRACT_NO": ["HT2024-SZ-0099"]
+    }
+  },
+  {
+    "id": "zh_biz_2",
+    "text": "由深圳远川数字科技有限公司对接，合同号：HT2024-SH-1001，联系人是李四。",
+    "expected": {
+      "COMPANY_NAME": ["深圳远川数字科技有限公司"],
+      "CONTRACT_NO": ["HT2024-SH-1001"],
+      "PERSON": ["李四"]
+    }
+  },
+  {
+    "id": "zh_negative_1",
+    "text": "今天下午三点开会，项目代号是春山计划，地点在总部会议室，不包含任何敏感身份信息。",
+    "expected": {}
+  },
+  {
+    "id": "zh_negative_2",
+    "text": "活动中心已开放，会议中心正在布展，请大家按时到场。",
+    "expected": {}
+  },
+  {
+    "id": "en_customer_1",
+    "text": "My name is John Smith, phone: +1 (415) 555-0123, DOB: 1991-04-23, address: 1 Market St, San Francisco, CA 94105.",
+    "expected": {
+      "PERSON": ["John Smith"],
+      "PHONE": ["+1 (415) 555-0123"],
+      "BIRTHDATE": ["1991-04-23"],
+      "ADDRESS": ["1 Market St, San Francisco, CA 94105"]
+    }
+  },
+  {
+    "id": "en_customer_2",
+    "text": "Contact is Emily Stone, mobile: +1 212-555-0188, address: 350 5th Ave Suite 20, New York, NY 10118.",
+    "expected": {
+      "PERSON": ["Emily Stone"],
+      "PHONE": ["+1 212-555-0188"],
+      "ADDRESS": ["350 5th Ave Suite 20, New York, NY 10118"]
+    }
+  },
+  {
+    "id": "en_identity_1",
+    "text": "I am Michael Turner, SSN: 123-45-6789, Date of Birth: 1988/11/02.",
+    "expected": {
+      "PERSON": ["Michael Turner"],
+      "SSN": ["123-45-6789"],
+      "BIRTHDATE": ["1988/11/02"]
+    }
+  },
+  {
+    "id": "en_finance_1",
+    "text": "Company is Northbridge Data Systems Inc., EIN: 12-3456789, vendor is BlueRiver Health Technologies LLC.",
+    "expected": {
+      "COMPANY_NAME": ["Northbridge Data Systems Inc.", "BlueRiver Health Technologies LLC"],
+      "TAX_ID": ["12-3456789"]
+    }
+  },
+  {
+    "id": "en_finance_2",
+    "text": "Signed with Harborview Commercial Bank PLC, Employer Identification Number: 98-7654321, and reviewed by Westfield General Hospital.",
+    "expected": {
+      "COMPANY_NAME": ["Harborview Commercial Bank PLC", "Westfield General Hospital"],
+      "TAX_ID": ["98-7654321"]
+    }
+  },
+  {
+    "id": "en_medical_1",
+    "text": "Patient ID: MRN-778899, SSN: 123-45-6789, tracking number: 1Z999AA10123456784.",
+    "expected": {
+      "MEDICAL_RECORD": ["MRN-778899"],
+      "SSN": ["123-45-6789"],
+      "TRACKING_NO": ["1Z999AA10123456784"]
+    }
+  },
+  {
+    "id": "en_medical_2",
+    "text": "Medical Record Number: AB-120045, recipient is Olivia Carter, address: 233 S Wacker Dr Apt 9, Chicago, IL 60606.",
+    "expected": {
+      "MEDICAL_RECORD": ["AB-120045"],
+      "PERSON": ["Olivia Carter"],
+      "ADDRESS": ["233 S Wacker Dr Apt 9, Chicago, IL 60606"]
+    }
+  },
+  {
+    "id": "en_logistics_1",
+    "text": "Recipient is Noah Parker, ship to: 1600 Pennsylvania Ave NW, Washington, DC 20500, shipment id: ZXCVBN12345678.",
+    "expected": {
+      "PERSON": ["Noah Parker"],
+      "ADDRESS": ["1600 Pennsylvania Ave NW, Washington, DC 20500"],
+      "TRACKING_NO": ["ZXCVBN12345678"]
+    }
+  },
+  {
+    "id": "en_company_1",
+    "text": "John Smith submitted the request, and BlueRiver Health Technologies LLC approved it.",
+    "expected": {
+      "PERSON": ["John Smith"],
+      "COMPANY_NAME": ["BlueRiver Health Technologies LLC"]
+    }
+  },
+  {
+    "id": "en_company_2",
+    "text": "ClearPath Software Solutions Corp. responded quickly, and Riverton State University provided the follow-up.",
+    "expected": {
+      "COMPANY_NAME": ["ClearPath Software Solutions Corp.", "Riverton State University"]
+    }
+  },
+  {
+    "id": "en_negative_1",
+    "text": "Please Contact Support immediately. Activity Center opened today.",
+    "expected": {}
+  },
+  {
+    "id": "en_negative_2",
+    "text": "The University hosted a public event and the Hospital announced a charity run.",
+    "expected": {}
+  },
+  {
+    "id": "mixed_case_1",
+    "text": "联系人：王小明。My name is John Smith, phone: +1 415-555-0123，收货地址：北京市朝阳区建国路88号，address: 350 5th Ave, New York, NY 10118.",
+    "expected": {
+      "PERSON": ["王小明", "John Smith"],
+      "PHONE": ["+1 415-555-0123"],
+      "ADDRESS": ["北京市朝阳区建国路88号", "350 5th Ave, New York, NY 10118"]
+    }
+  },
+  {
+    "id": "mixed_case_2",
+    "text": "收件人：李四，tracking number: 1Z999AA10123456784，地址发到上海市浦东新区世纪大道100号，ship to: 221B Baker St Apt 5, Boston, MA 02108.",
+    "expected": {
+      "PERSON": ["李四"],
+      "TRACKING_NO": ["1Z999AA10123456784"],
+      "ADDRESS": ["上海市浦东新区世纪大道100号", "221B Baker St Apt 5, Boston, MA 02108"]
+    }
+  },
+  {
+    "id": "mixed_case_3",
+    "text": "患者是张三，MRN: MRN-778899，联系电话13812345678，Contact is Emily Stone.",
+    "expected": {
+      "PERSON": ["张三", "Emily Stone"],
+      "MEDICAL_RECORD": ["MRN-778899"],
+      "PHONE": ["13812345678"]
+    }
+  }
+]

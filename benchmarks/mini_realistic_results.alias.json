@@ -1,0 +1,292 @@
+{
+  "mode": "alias",
+  "strategy": "strict",
+  "metrics": {
+    "precision": 0.9425,
+    "recall": 0.9647,
+    "false_positive_rate": 0.1613,
+    "recovery_rate": 0.9355,
+    "semantic_proxy": 0.75
+  },
+  "cases": [
+    {
+      "id": "zh_customer_support_1",
+      "masked_text": "用户反馈：我叫陈明，昨天在门店留的手机号是17785952998，现在请改成收件人钱欣怡，地址发到350 5th Ave, New York, NY 10118。",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.75
+    },
+    {
+      "id": "zh_customer_support_2",
+      "masked_text": "联系人：卫浩，微信号是wt4ep0alw7h，联系地址：广东省深圳市南山区科技园科苑路15号。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.556
+    },
+    {
+      "id": "zh_identity_1",
+      "masked_text": "我是郑晨，身份证803004909160803244，生日：1998-04-28。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "zh_identity_2",
+      "masked_text": "患者是卫浩，护照号650347203，浙江省杭州市余杭区文一西路18号。",
+      "matches": 2,
+      "expected": 3,
+      "false_positives": 1,
+      "recovery_ok": true,
+      "semantic_proxy": 0.556
+    },
+    {
+      "id": "zh_finance_1",
+      "masked_text": "开户银行：中国工商银行杭州分行，银行账号：0246 1511 1263 0062 400，纳税人识别号：297659439Y92BQ5239。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.667
+    },
+    {
+      "id": "zh_finance_2",
+      "masked_text": "公司名称：成都星帆智能科技有限公司，统一社会信用代码02658133RX19VZ915B，开户行：招商银行上海分行。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "zh_medical_1",
+      "masked_text": "患者钱欣怡已办理入院，病历号NX67478888378，住址为湖北省武汉市洪山区珞喻路120号。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.889
+    },
+    {
+      "id": "zh_medical_2",
+      "masked_text": "门诊号：GA62044386958，患者是陈明，联系地址：四川省成都市高新区天府大道北段66号。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.889
+    },
+    {
+      "id": "zh_logistics_1",
+      "masked_text": "请发到湖北省武汉市洪山区珞喻路120号，签收人是卫浩，快递单号AX6330583691。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "zh_logistics_2",
+      "masked_text": "收件人：钱欣怡，收货地址：江苏省苏州市工业园区星湖街88号，订单编号：02254601D2Q243。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.667
+    },
+    {
+      "id": "zh_vehicle_1",
+      "masked_text": "车主是钱欣怡，车牌号川BEANU1，车架号：HXK534748E3602280。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.556
+    },
+    {
+      "id": "zh_vehicle_2",
+      "masked_text": "请陈明明天到会，车牌沪LV3GDG，联系人手机号15685452678。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "zh_biz_1",
+      "masked_text": "客户号：HY-6644-6368，会员号：CNV-519784，合同编号：4S0886-2H-1938。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "zh_biz_2",
+      "masked_text": "由杭州清穹信息技术有限公司对接，合同号：S22010-6J-4545，联系人是卫浩。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "zh_negative_1",
+      "masked_text": "今天下午三点开会，项目代号是春山计划，地点在总部会议室，不包含任何敏感身份信息。",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "zh_negative_2",
+      "masked_text": "活动中心已开放，会议中心正在布展，请大家按时到场。",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "en_customer_1",
+      "masked_text": "My name is Liam Foster, phone: 17735637238, DOB: 1984-07-13, address: 233 S Wacker Dr, Chicago, IL 60606.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.667
+    },
+    {
+      "id": "en_customer_2",
+      "masked_text": "Contact is Liam Foster, mobile: 18361345010, address: 350 5th Ave, New York, NY 10118uite 20, New York, NY 10118.",
+      "matches": 2,
+      "expected": 3,
+      "false_positives": 1,
+      "recovery_ok": true,
+      "semantic_proxy": 0.444
+    },
+    {
+      "id": "en_identity_1",
+      "masked_text": "I am Olivia Carter, SSN: 411-28-2962, Date of Birth: 1989/09/09.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.889
+    },
+    {
+      "id": "en_finance_1",
+      "masked_text": "Company is ClearPath Software Solutions Corp., EIN: 62-8512854, vendor is Westfield General Hospital.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "en_finance_2",
+      "masked_text": "Signed with BlueRiver Health Technologies LLC, Employer Identification Number: 69-3598976, and reviewed by ClearPath Software Solutions Corp..",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "en_medical_1",
+      "masked_text": "Patient ID: 2L9-356047, SSN: 411-28-2962, tracking number: 3G967DK95308622509.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.778
+    },
+    {
+      "id": "en_medical_2",
+      "masked_text": "Medical Record Number: 77-798105, recipient is Sophia Bennett, address: 350 5th Ave, New York, NY 10118.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.556
+    },
+    {
+      "id": "en_logistics_1",
+      "masked_text": "Recipient is Ethan Walker, ship to: 350 5th Ave, New York, NY 10118W, Washington, DC 20500, shipment id: P5EEUY48853024.",
+      "matches": 2,
+      "expected": 3,
+      "false_positives": 1,
+      "recovery_ok": true,
+      "semantic_proxy": 0.444
+    },
+    {
+      "id": "en_company_1",
+      "masked_text": "Liam Foster submitted the request, and Westfield General Hospital. approved it.",
+      "matches": 2,
+      "expected": 2,
+      "false_positives": 1,
+      "recovery_ok": false,
+      "semantic_proxy": 0.667
+    },
+    {
+      "id": "en_company_2",
+      "masked_text": "Harborview Commercial Bank PLC responded quickly, and Westfield General Hospital. provided the follow-up.",
+      "matches": 2,
+      "expected": 2,
+      "false_positives": 1,
+      "recovery_ok": false,
+      "semantic_proxy": 0.667
+    },
+    {
+      "id": "en_negative_1",
+      "masked_text": "Please Contact Support immediately. Activity Center opened today.",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "en_negative_2",
+      "masked_text": "The University hosted a public event and the Hospital announced a charity run.",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "mixed_case_1",
+      "masked_text": "联系人：钱欣怡。My name is Liam Foster, phone: 13575892045，收货地址：上海市浦东新区世纪大道100号，address: 1600 Pennsylvania Ave NW, Washington, DC 20500.",
+      "matches": 5,
+      "expected": 5,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.667
+    },
+    {
+      "id": "mixed_case_2",
+      "masked_text": "收件人：卫浩，tracking number: 3G967DK95308622509，地址发到广东省深圳市南山区科技园科苑路15号，ship to: 1600 Pennsylvania Ave NW, Washington, DC 20500.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.75
+    },
+    {
+      "id": "mixed_case_3",
+      "masked_text": "患者是陈明，MRN: 2L9-356047，联系电话17785952998，Contact is Liam Foster.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.75
+    }
+  ]
+}

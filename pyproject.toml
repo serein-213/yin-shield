@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yinshield"
+dynamic = ["version", "readme"]
+description = "A zero-config, local-first privacy layer for AI APIs with semantic-preserving de-identification."
+authors = [
+  { name = "Tingcai Chen", email = "revdd@vip.qq.com" }
+]
+requires-python = ">=3.8"
+license = "Apache-2.0"
+keywords = ["privacy", "llm", "openai", "deepseek", "pii", "security", "ai-safety"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Security",
+]
+dependencies = [
+  "requests",
+  "faker",
+]
+
+[project.optional-dependencies]
+ai = [
+  "onnxruntime",
+  "numpy",
+]
+openai = [
+  "openai>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/serein-213/yin-shield"
+Issues = "https://github.com/serein-213/yin-shield/issues"
+
+[project.scripts]
+yinshield = "yinshield.cli:main"
+yinshield-install-openclaw = "yinshield.install_openclaw:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.dynamic]
+version = { attr = "yinshield.__version__" }
+readme = { file = ["README.md"], content-type = "text/markdown" }

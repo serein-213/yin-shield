@@ -1,0 +1,112 @@
+{
+  "mode": "placeholder",
+  "strategy": "strict",
+  "metrics": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "false_positive_rate": 0.0,
+    "recovery_rate": 1.0,
+    "semantic_proxy": 0.3662
+  },
+  "cases": [
+    {
+      "id": "case_1",
+      "masked_text": "我叫<PERSON_1>，手机号<PHONE_1>，身份证<ID_CARD_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "case_2",
+      "masked_text": "收件人：<PERSON_1>，收货地址：<ADDRESS_1>，快递单号<TRACKING_NO_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "case_3",
+      "masked_text": "公司名称：<COMPANY_NAME_1>，统一社会信用代码<COMPANY_CODE_1>。",
+      "matches": 2,
+      "expected": 2,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.167
+    },
+    {
+      "id": "case_4",
+      "masked_text": "患者是<PERSON_1>，病历号<MEDICAL_RECORD_1>，护照号<PASSPORT_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "case_5",
+      "masked_text": "银行卡<BANK_CARD_1>，车牌<LICENSE_PLATE_1>，订单号<ORDER_NO_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "negative_1",
+      "masked_text": "今天下午三点开会，项目代号是春山计划，不包含任何敏感身份信息。",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "en_case_1",
+      "masked_text": "My name is <PERSON_1>, phone: <PHONE_1>, SSN: <SSN_1>.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.333
+    },
+    {
+      "id": "en_case_2",
+      "masked_text": "Ship to: <ADDRESS_1>. Signed with <COMPANY_NAME_1> and <COMPANY_NAME_2>.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "mixed_case_1",
+      "masked_text": "联系人：<PERSON_2>。My name is <PERSON_1>, 收货地址：<ADDRESS_2>，address: <ADDRESS_1>.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.167
+    },
+    {
+      "id": "en_negative_1",
+      "masked_text": "Please Contact Support immediately. Activity Center opened today.",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "en_case_3",
+      "masked_text": "DOB: <BIRTHDATE_1>, EIN: <TAX_ID_1>, MRN: <MEDICAL_RECORD_1>, tracking number: <TRACKING_NO_1>.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.25
+    }
+  ]
+}

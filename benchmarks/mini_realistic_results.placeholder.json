@@ -1,0 +1,292 @@
+{
+  "mode": "placeholder",
+  "strategy": "strict",
+  "metrics": {
+    "precision": 0.9765,
+    "recall": 0.9765,
+    "false_positive_rate": 0.0645,
+    "recovery_rate": 1.0,
+    "semantic_proxy": 0.321
+  },
+  "cases": [
+    {
+      "id": "zh_customer_support_1",
+      "masked_text": "用户反馈：我叫<PERSON_1>，昨天在门店留的手机号是<PHONE_1>，现在请改成收件人<PERSON_2>，地址发到<ADDRESS_1>。",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.167
+    },
+    {
+      "id": "zh_customer_support_2",
+      "masked_text": "联系人：<PERSON_1>，微信号是<WECHAT_1>，联系地址：<ADDRESS_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.333
+    },
+    {
+      "id": "zh_identity_1",
+      "masked_text": "我是<PERSON_1>，身份证<ID_CARD_1>，生日：<BIRTHDATE_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "zh_identity_2",
+      "masked_text": "患者是<PERSON_1>，护照号<PASSPORT_1>，<ADDRESS_1>。",
+      "matches": 2,
+      "expected": 3,
+      "false_positives": 1,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "zh_finance_1",
+      "masked_text": "开户银行：<BANK_NAME_1>，银行账号：<BANK_ACCOUNT_1>，纳税人识别号：<TAX_ID_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.333
+    },
+    {
+      "id": "zh_finance_2",
+      "masked_text": "公司名称：<COMPANY_NAME_1>，统一社会信用代码<COMPANY_CODE_1>，开户行：<BANK_NAME_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "zh_medical_1",
+      "masked_text": "患者<PERSON_1>已办理入院，病历号<MEDICAL_RECORD_1>，住址为<ADDRESS_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "zh_medical_2",
+      "masked_text": "门诊号：<MEDICAL_RECORD_1>，患者是<PERSON_1>，联系地址：<ADDRESS_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "zh_logistics_1",
+      "masked_text": "请发到<ADDRESS_1>，签收人是<PERSON_1>，快递单号<TRACKING_NO_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "zh_logistics_2",
+      "masked_text": "收件人：<PERSON_1>，收货地址：<ADDRESS_1>，订单编号：<ORDER_NO_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "zh_vehicle_1",
+      "masked_text": "车主是<PERSON_1>，车牌号<LICENSE_PLATE_1>，车架号：<VIN_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.0
+    },
+    {
+      "id": "zh_vehicle_2",
+      "masked_text": "请<PERSON_1>明天到会，车牌<LICENSE_PLATE_1>，联系人手机号<PHONE_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.111
+    },
+    {
+      "id": "zh_biz_1",
+      "masked_text": "客户号：<CUSTOMER_ID_1>，会员号：<MEMBER_ID_1>，合同编号：<CONTRACT_NO_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.333
+    },
+    {
+      "id": "zh_biz_2",
+      "masked_text": "由<COMPANY_NAME_1>对接，合同号：<CONTRACT_NO_1>，联系人是<PERSON_1>。",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "zh_negative_1",
+      "masked_text": "今天下午三点开会，项目代号是春山计划，地点在总部会议室，不包含任何敏感身份信息。",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "zh_negative_2",
+      "masked_text": "活动中心已开放，会议中心正在布展，请大家按时到场。",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "en_customer_1",
+      "masked_text": "My name is <PERSON_1>, phone: <PHONE_1>, DOB: <BIRTHDATE_1>, address: <ADDRESS_1>.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.25
+    },
+    {
+      "id": "en_customer_2",
+      "masked_text": "Contact is <PERSON_1>, mobile: <PHONE_1>, address: <ADDRESS_1>.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "en_identity_1",
+      "masked_text": "I am <PERSON_1>, SSN: <SSN_1>, Date of Birth: <BIRTHDATE_1>.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.333
+    },
+    {
+      "id": "en_finance_1",
+      "masked_text": "Company is <COMPANY_NAME_1>, EIN: <TAX_ID_1>, vendor is <COMPANY_NAME_2>.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "en_finance_2",
+      "masked_text": "Signed with <COMPANY_NAME_1>, Employer Identification Number: <TAX_ID_1>, and reviewed by <COMPANY_NAME_2>.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.333
+    },
+    {
+      "id": "en_medical_1",
+      "masked_text": "Patient ID: <MEDICAL_RECORD_1>, SSN: <SSN_1>, tracking number: <TRACKING_NO_1>.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.222
+    },
+    {
+      "id": "en_medical_2",
+      "masked_text": "Medical Record Number: <MEDICAL_RECORD_1>, recipient is <PERSON_1>, address: <ADDRESS_1>.",
+      "matches": 3,
+      "expected": 3,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.111
+    },
+    {
+      "id": "en_logistics_1",
+      "masked_text": "Recipient is <PERSON_1>, ship to: <ADDRESS_1> NW, Washington, DC 20500, shipment id: <TRACKING_NO_1>.",
+      "matches": 2,
+      "expected": 3,
+      "false_positives": 1,
+      "recovery_ok": true,
+      "semantic_proxy": 0.333
+    },
+    {
+      "id": "en_company_1",
+      "masked_text": "<PERSON_1> submitted the request, and <COMPANY_NAME_1> approved it.",
+      "matches": 2,
+      "expected": 2,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.167
+    },
+    {
+      "id": "en_company_2",
+      "masked_text": "<COMPANY_NAME_1> responded quickly, and <COMPANY_NAME_2> provided the follow-up.",
+      "matches": 2,
+      "expected": 2,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.167
+    },
+    {
+      "id": "en_negative_1",
+      "masked_text": "Please Contact Support immediately. Activity Center opened today.",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "en_negative_2",
+      "masked_text": "The University hosted a public event and the Hospital announced a charity run.",
+      "matches": 0,
+      "expected": 0,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 1.0
+    },
+    {
+      "id": "mixed_case_1",
+      "masked_text": "联系人：<PERSON_2>。My name is <PERSON_1>, phone: <PHONE_1>，收货地址：<ADDRESS_2>，address: <ADDRESS_1>.",
+      "matches": 5,
+      "expected": 5,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.2
+    },
+    {
+      "id": "mixed_case_2",
+      "masked_text": "收件人：<PERSON_1>，tracking number: <TRACKING_NO_1>，地址发到<ADDRESS_2>，ship to: <ADDRESS_1>.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.167
+    },
+    {
+      "id": "mixed_case_3",
+      "masked_text": "患者是<PERSON_2>，MRN: <MEDICAL_RECORD_1>，联系电话<PHONE_1>，Contact is <PERSON_1>.",
+      "matches": 4,
+      "expected": 4,
+      "false_positives": 0,
+      "recovery_ok": true,
+      "semantic_proxy": 0.167
+    }
+  ]
+}
