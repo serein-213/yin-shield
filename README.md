@@ -1,8 +1,24 @@
-# YinShield
+<p align="center">
+  <img src="./docs/assets/logo.svg" alt="YinShield logo" width="88" height="88">
+</p>
 
-English | [简体中文](./README.zh-CN.md)
+<h1 align="center">YinShield</h1>
 
-YinShield is a local de-identification gateway for AI workflows.
+<p align="center">
+  A local de-identification gateway for AI workflows.
+</p>
+
+<p align="center">
+  Mask sensitive fields locally before they leave the host.
+</p>
+
+<p align="center">
+  English | <a href="./README.zh-CN.md">简体中文</a>
+</p>
+
+<p align="center">
+  <code>pip install yinshield</code>
+</p>
 
 Current shipping forms:
 - PyPI package: `yinshield`

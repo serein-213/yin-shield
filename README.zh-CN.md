@@ -1,8 +1,24 @@
-# YinShield
+<p align="center">
+  <img src="./docs/assets/logo.svg" alt="YinShield logo" width="88" height="88">
+</p>
 
-[English](./README.md) | 简体中文
+<h1 align="center">YinShield</h1>
 
-YinShield 是一个面向 AI 工作流的本地脱敏网关。
+<p align="center">
+  面向 AI 工作流的本地脱敏网关。
+</p>
+
+<p align="center">
+  在敏感字段离开主机之前，先在本地完成替换。
+</p>
+
+<p align="center">
+  <a href="./README.md">English</a> | 简体中文
+</p>
+
+<p align="center">
+  <code>pip install yinshield</code>
+</p>
 
 当前发布形态：
 - PyPI 包：`yinshield`
