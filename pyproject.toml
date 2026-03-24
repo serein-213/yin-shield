@@ -15,7 +15,6 @@ keywords = ["privacy", "llm", "openai", "deepseek", "pii", "security", "ai-safet
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "License :: OSI Approved :: Apache Software License",
   "Operating System :: OS Independent",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
   "Topic :: Security",
