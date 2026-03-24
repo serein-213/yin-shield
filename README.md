@@ -1,53 +1,60 @@
 # YinShield
 
-YinShield is a local-first privacy layer for LLM workflows.
+English | [简体中文](./README.zh-CN.md)
 
-当前版本的发布形态是：
-- PyPI 包：`yinshield`
-- 本地 HTTP 服务：`yinshield serve`
-- OpenClaw 薄插件：`@serein-213/openclaw-yinshield`
+YinShield is a local de-identification gateway for AI workflows.
+
+Current shipping forms:
+- PyPI package: `yinshield`
+- Local HTTP service: `yinshield serve`
+- Thin OpenClaw plugin: `@serein-213/openclaw-yinshield`
 
 ## Status
 
-- 当前建议发布定位：`0.1.0 alpha`
-- 适用场景：本地单用户隐私层、开发者接入验证、OpenClaw 集成试用
-- 当前最稳模式：`mode="placeholder"`
-- 当前仍在持续打磨的部分：`mode="alias"` 在更真实英文分布下的恢复率与误伤控制
+- Recommended release position: `0.1.0 alpha`
+- Recommended default path: `mode="placeholder"`
+- Best-fit scenarios today: Chinese customer support, enterprise copilots, internal agents, and any workflow that needs sensitive fields masked before a request leaves the host
+- Clearest production boundary today: mask locally first, send the model request second, restore readable output locally after inference
+- Still being tuned: `mode="alias"` recovery and false-positive control on more realistic English distributions
 
 ## What Works Now
 
-- 中英 PII 脱敏：中文姓名、英文姓名、手机号、US phone、身份证、SSN、邮箱、微信号、银行卡、银行账号、开户行、座机、车牌、护照、统一社会信用代码、税号、公司名、地址、生日、DOB、IP、VIN、EIN、病历号、MRN、订单号、快递单号、tracking number、客户号、会员号、合同号
-- 两种替换模式：
-  - `mode="placeholder"`：`张三 -> <PERSON_1>`
-  - `mode="alias"`：`张三 -> 陈明`
-- 三档策略：
-  - `loose`：只处理高置信实体
-  - `balanced`：默认，适合一般对话和客服文本
-  - `strict`：覆盖更多上下文实体和业务编号
-- 会话一致性：同一实体可跨轮保持一致替换，且支持持久化到文件
-- OpenAI-compatible 接入：
+- Chinese and English PII masking: Chinese names, English names, mobile phone numbers, US phone numbers, Chinese ID cards, SSNs, email, WeChat IDs, bank cards, bank accounts, bank names, landlines, license plates, passports, unified social credit codes, tax IDs, company names, addresses, birthdates, DOB, IP addresses, VIN, EIN, medical record IDs, MRN, order numbers, tracking numbers, customer IDs, member IDs, and contract numbers
+- Two replacement modes:
+  - `mode="placeholder"`: `Zhang San -> <PERSON_1>`
+  - `mode="alias"`: `Zhang San -> Chen Ming`
+- Three strategy levels:
+  - `loose`: high-confidence entities only
+  - `balanced`: default, suitable for general conversations and customer-support text
+  - `strict`: broader coverage for contextual entities and business identifiers
+- Deterministic placeholders: `placeholder` mode is the better default for production flows that need debuggable, auditable, reproducible masking
+- Session-scoped stable mappings: the same entity can keep the same replacement across turns, and mappings can be persisted locally
+- Local re-identification: mappings and restoration logic stay on the local side instead of being delegated to third-party services
+- OpenAI-compatible integrations:
   - `ShieldedOpenAI`
   - `ShieldedAsyncOpenAI`
   - `chat.completions`
   - `responses`
   - `stream=True`
   - `base_url=...`
-- 本地 HTTP 服务：
+- Local HTTP service:
   - `POST /health`
   - `POST /mask`
   - `POST /unmask`
   - `POST /messages/mask`
-- OpenClaw 集成：
+- OpenClaw integration:
   - `yinshield_mask`
   - `yinshield_unmask`
   - `yinshield_shield_messages`
 
 ## Installation
+
 ```bash
 pip install yinshield
 ```
 
 For local release validation:
+
 ```bash
 python -m unittest discover -s tests -v
 python benchmarks/run_benchmark.py --dataset benchmarks/mini_realistic_dataset.json --mode placeholder --strategy strict --output benchmarks/mini_realistic_results.placeholder.json
@@ -65,10 +72,10 @@ python scripts/sync_release_version.py 0.1.0
 python scripts/check_version_consistency.py
 ```
 
-Full release steps are documented in [RELEASE.md](/home/chen/code/yin-shield/RELEASE.md).
+Full release steps are documented in [RELEASE.md](./RELEASE.md).
 
 Alpha release notes:
-- [0.1.0-alpha](/home/chen/code/yin-shield/docs/release-notes/0.1.0-alpha.md)
+- [0.1.0-alpha](./docs/release-notes/0.1.0-alpha.md)
 
 ## Quick Start For OpenClaw
 
@@ -86,21 +93,25 @@ yinshield serve
 - print the exact `yinshield serve --auth-token ...` command to run
 
 Installed CLI alias:
+
 ```bash
 yinshield-install-openclaw
 ```
 
 Shell bootstrap for users who prefer a one-shot script:
+
 ```bash
 bash scripts/setup-openclaw-yinshield.sh
 ```
 
 If you later host this script, the curl-style entry can be:
+
 ```bash
 curl -fsSL https://your-domain/setup-openclaw-yinshield.sh | bash
 ```
 
 OpenClaw plugin config:
+
 ```json
 {
   "plugins": {
@@ -119,6 +130,7 @@ OpenClaw plugin config:
 ```
 
 ## Basic Usage
+
 ```python
 from yinshield import Shield, ShieldSession
 
@@ -128,7 +140,7 @@ shield = Shield(
 )
 
 session = ShieldSession()
-raw_text = "收件人：张三，手机号13812345678，收货地址：北京市朝阳区建国路88号。"
+raw_text = "Recipient: Zhang San, phone 13812345678, address 88 Jianguo Road, Chaoyang District, Beijing."
 
 masked_text, mapping = shield.mask(raw_text, session=session)
 print(masked_text)
@@ -138,21 +150,23 @@ print(restored)
 ```
 
 ## Session Persistence
+
 ```python
 from yinshield import Shield
 
 shield = Shield(mode="alias", strategy="strict")
-shield.mask("联系人：王小明，手机号13812345678。")
+shield.mask("Contact: Wang Xiaoming, phone 13812345678.")
 shield.save_session("yinshield-session.json")
 
 another = Shield(mode="alias", strategy="strict")
 another.load_session("yinshield-session.json")
-masked, _ = another.mask("请再次联系王小明，手机号13812345678。")
+masked, _ = another.mask("Please contact Wang Xiaoming again, phone 13812345678.")
 ```
 
 ## Local HTTP Service
 
 Start the bridge:
+
 ```bash
 yinshield serve
 ```
@@ -162,6 +176,7 @@ Default bind:
 - port: `27811`
 
 Custom bind:
+
 ```bash
 yinshield serve --host 127.0.0.1 --port 27811 --mode placeholder --strategy balanced --auth-token change-me
 ```
@@ -169,39 +184,43 @@ yinshield serve --host 127.0.0.1 --port 27811 --mode placeholder --strategy bala
 HTTP API:
 
 `POST /health`
+
 ```json
 {}
 ```
 
 `POST /mask`
+
 ```json
 {
-  "text": "我叫张三，手机号13812345678",
+  "text": "My name is Zhang San, phone 13812345678",
   "mode": "placeholder",
   "session_id": "chat-1"
 }
 ```
 
 `POST /unmask`
+
 ```json
 {
-  "text": "我叫<PERSON_1>，手机号<PHONE_1>",
+  "text": "My name is <PERSON_1>, phone <PHONE_1>",
   "mapping": {
-    "<PERSON_1>": "张三",
+    "<PERSON_1>": "Zhang San",
     "<PHONE_1>": "13812345678"
   }
 }
 ```
 
 `POST /messages/mask`
+
 ```json
 {
   "messages": [
-    { "role": "user", "content": "我叫张三，手机号13812345678" },
+    { "role": "user", "content": "My name is Zhang San, phone 13812345678" },
     {
       "role": "user",
       "content": [
-        { "type": "text", "text": "订单号20240324ABC123" }
+        { "type": "text", "text": "Order number 20240324ABC123" }
       ]
     }
   ],
@@ -211,12 +230,13 @@ HTTP API:
 ```
 
 Notes:
-- HTTP service is now stateless by default.
-- To reuse aliases/placeholders across turns, pass `session_id`.
-- If `--auth-token` is omitted, `yinshield serve` generates a temporary token and prints it.
-- To protect the local service, send `Authorization: Bearer <token>`.
+- HTTP service is stateless by default
+- To reuse aliases or placeholders across turns, pass `session_id`
+- If `--auth-token` is omitted, `yinshield serve` generates a temporary token and prints it
+- To protect the local service, send `Authorization: Bearer <token>`
 
 ## OpenAI-Compatible Wrapper
+
 ```python
 from yinshield import ShieldedOpenAI
 
@@ -228,12 +248,12 @@ client = ShieldedOpenAI(
 response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
-        {"role": "user", "content": "我叫张三，手机号是13812345678"}
+        {"role": "user", "content": "My name is Zhang San, my phone is 13812345678"}
     ],
 )
 
 print(response.choices[0].message.content)
-# 请求发送前自动脱敏，返回内容自动还原
+# Request is masked before send, output is restored after response
 ```
 
 Current wrapper coverage:
@@ -245,6 +265,7 @@ Current wrapper coverage:
 - `await async_client.responses.create(...)`
 
 ## Async Wrapper
+
 ```python
 from yinshield import ShieldedAsyncOpenAI
 
@@ -252,34 +273,39 @@ client = ShieldedAsyncOpenAI(api_key="YOUR_OPENAI_API_KEY")
 
 response = await client.responses.create(
     model="gpt-4.1-mini",
-    input="我叫张三，手机号13812345678",
+    input="My name is Zhang San, my phone is 13812345678",
 )
 
 print(response.output_text)
 ```
 
 ## CLI
+
 ```bash
 python -m yinshield --mode alias --strategy strict --session-file .yinshield.json \
-  "收件人：张三，手机号13812345678，订单号20240324ABC123"
+  "Recipient: Zhang San, phone 13812345678, order number 20240324ABC123"
 ```
 
 Run local service:
+
 ```bash
 yinshield serve --session-file .yinshield-http-session.json
 ```
 
 ## OpenClaw Installer
+
 ```bash
 python -m yinshield.install_openclaw
 ```
 
 Equivalent installed command:
+
 ```bash
 yinshield-install-openclaw
 ```
 
 Preview without writing files:
+
 ```bash
 python -m yinshield.install_openclaw --print-only
 ```
@@ -287,6 +313,7 @@ python -m yinshield.install_openclaw --print-only
 ## Benchmark
 
 Local benchmark script:
+
 ```bash
 python benchmarks/run_benchmark.py --mode placeholder --strategy strict
 python benchmarks/run_benchmark.py --mode alias --strategy strict
@@ -303,51 +330,51 @@ Mini realistic-set results:
 - `alias + strict`: `precision=0.954 recall=0.9765 false_positive_rate=0.129 recovery_rate=0.9032 semantic_proxy=0.75`
 
 The current sample set includes:
-- 中文身份与业务编号
-- 英文姓名、US phone、SSN、DOB、EIN、MRN、tracking number
-- 中英混合姓名与地址
-- 英文地址 `Apt/Unit/Suite` 变体
-- 负样例误伤检查
+- Chinese identity and business identifiers
+- English names, US phone, SSN, DOB, EIN, MRN, tracking number
+- Mixed Chinese-English names and addresses
+- English address variants such as `Apt/Unit/Suite`
+- Negative-set false-positive checks
 
 The mini realistic set adds:
-- 30 条更接近真实分布的小评测样本
-- 中文客服/金融/医疗/物流
-- 英文客户资料/合规/医疗/物流
-- 中英混合文本
-- 更严格的负样例和恢复率检查
+- 30 small samples closer to real-world distribution
+- Chinese customer support, finance, medical, and logistics cases
+- English customer profile, compliance, medical, and logistics cases
+- Mixed Chinese-English text
+- Stricter negative samples and recovery-rate checks
 
 `semantic_proxy` is only a local format-preservation heuristic, not a downstream LLM task benchmark.
 
 ## Coverage Audit
 
-当前规则覆盖度更接近“中英业务文本的高频显式字段脱敏 + 弱语义上下文识别”，不是通用语义 NER。
+Current rule coverage is closer to "high-frequency explicit-field masking for Chinese-English business text plus light contextual recognition", not general semantic NER.
 
-已支持：
-- 基础身份信息：中文姓名、英文姓名、手机号、US phone、身份证、SSN、生日、DOB、邮箱、微信号
-- 地址与位置：中文住址变体、英文街道地址、`Apt/Unit/Suite` 类英文地址
-- 企业与金融：公司名称、统一社会信用代码、税号、EIN、银行卡、银行账号、开户行
-- 交通与设备：车牌、护照、VIN、IPv4 地址
-- 医疗与业务编号：病历号、MRN、订单号、快递单号、tracking number、客户号、会员号、合同号
+Supported:
+- Basic identity information: Chinese names, English names, mobile phone numbers, US phone numbers, Chinese ID cards, SSNs, birthdates, DOB, email, WeChat IDs
+- Address and location: common Chinese address patterns, English street addresses, English `Apt/Unit/Suite` variants
+- Enterprise and finance: company names, unified social credit codes, tax IDs, EIN, bank cards, bank accounts, bank names
+- Transport and devices: license plates, passports, VIN, IPv4 addresses
+- Medical and business identifiers: medical record numbers, MRN, order numbers, tracking numbers, customer IDs, member IDs, contract numbers
 
-部分支持：
-- 中文姓名：对“我叫/联系人/收件人/患者”等上下文较强，对自然叙述句中的姓名识别仍有限
-- 中文地址：对“省市区路号”类格式较强，对口语化、园区/楼宇简称、缺少行政区前缀的短地址仍有限
-- 英文姓名与公司名：对显式字段和部分自然句式较稳，但复杂长句、缩写、跨句引用仍有限
-- `alias` 模式：在更真实的英文公司名和英文地址场景下，恢复率和误伤率仍弱于 `placeholder`
-- 企业信息：公司名称和统一社会信用代码/EIN 较稳，但法人、开户名、营业执照号等尚未覆盖
+Partially supported:
+- Chinese personal names: strong on contexts such as "my name is", "contact", "recipient", or "patient"; still limited in fully natural narrative sentences
+- Chinese addresses: strong on province-city-district-road-number formats; still limited on colloquial references, campus/park abbreviations, or short addresses without administrative prefixes
+- English names and company names: stable on explicit fields and some natural sentences; still limited on complex long sentences, abbreviations, and cross-sentence references
+- `alias` mode: still weaker than `placeholder` on recovery rate and false positives for more realistic English company-name and address distributions
+- Enterprise information: company names and unified social credit code / EIN are stable; legal representatives, account names, and business-license IDs are not yet covered
 
-未支持或仍较弱：
-- MAC/GPS 坐标/精确地理位置
-- 发票号、设备序列号、组织机构代码、车牌以外更多车辆字段
-- 真正的语义实体识别、实体消歧、弱上下文推断
+Not yet supported or still weak:
+- MAC addresses, GPS coordinates, and precise geolocation
+- Invoice numbers, device serial numbers, organization codes, and more vehicle fields beyond license plates
+- General semantic entity recognition, entity disambiguation, and weak-context inference
 
 ## Next
 
-- 英文实体支持
-- OpenClaw 自动拉起本地服务
-- 更稳的上下文识别和实体边界
-- Anthropic / LiteLLM / LangChain 接入
-- 更真实的下游任务语义评测
+- Better English entity support
+- OpenClaw auto-start for the local service
+- More robust contextual recognition and entity boundaries
+- Anthropic / LiteLLM / LangChain integrations
+- More realistic downstream semantic evaluation
 
 ## License
 
